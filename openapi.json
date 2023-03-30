@@ -1,0 +1,64 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API for users",
+        "version": "1.0.0"
+    },
+    "servers": [{
+        "url": "https://application-account-lookup.y2cdzh8ourd.us-south.codeengine.appdomain.cloud"
+    }],
+    "paths": {
+        "/api/users": {
+            "get": {
+                "description": "Returns the account balance for a given account number",
+                "parameters": [{
+                    "name": "account",
+                    "in": "query",
+                    "required": true,
+                    "description": "The account number",
+                    "schema": {
+                        "type": "integer"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Account balance found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "found": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Account not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "found": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
